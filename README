@@ -1,0 +1,6 @@
+
+helloserver is a 'helloword' TCP server.
+    high performance tcp server.
+
+client/helloclient is the helloserver's client.
+
