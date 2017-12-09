@@ -18,9 +18,9 @@ public:
     bool stop();
 
 protected:
-    bool processEchoReq(int cliSock, struct sockaddr_in *cliAddr);
+    virtual bool processReq(int cliSock, struct sockaddr_in *cliAddr);
 
-private:
+protected:
     std::string mHost;
     unsigned int mPort;
     int mSock;

@@ -15,12 +15,11 @@ class SocketClient
 public:
     SocketClient(std::string host, unsigned int port);
     bool start();
-    bool sendEcho();
     bool stop();
 
-protected:
+    virtual bool sendReq();
 
-private:
+protected:
     std::string mHost;
     unsigned int mPort;
     int mSock;

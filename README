@@ -1,6 +1,11 @@
 
-helloserver is a 'helloword' TCP server.
+[helloserver]
+    is a 'helloword' TCP server.
     high performance tcp server.
 
-client/helloclient is the helloserver's client.
+[client/helloclient]
+    is the helloserver's client.
+
+[dpt/hellopressure]
+    is the helloserver's distributed pressure test client.
 

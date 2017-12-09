@@ -67,43 +67,9 @@ bool SocketServer::start()
             std::cout << "accept " << strerror(errno) << std::endl;
             break;
         }
-        processEchoReq(cliSock, &cliAddr);
+        processReq(cliSock, &cliAddr);
     }
     
-    return true;
-}
-
-bool SocketServer::processEchoReq(int cliSock, struct sockaddr_in *cliAddr)
-{
-    //step 1. ssize_t recv(int sockfd, void *buf, size_t len, int flags);
-    char buff[128] = {0};
-    ssize_t res = 0;
-    while (true)
-    {
-        res = recv(cliSock, buff, sizeof(buff), 0);
-        if (res == 0)
-        {
-            std::cout << "peer was close." << std::endl;
-            break;
-            //return true;
-        }
-        else if (res == -1)
-        {
-            std::cout << "recv " << strerror(errno) << std::endl;
-            break;
-            //return false;
-        }
-
-        //step 2. ssize_t send(int sockfd, const void *buf, size_t len, int flags);
-        res =  send(cliSock, buff, strlen(buff), 0);
-        if (res == -1)
-        {
-            std::cout << "send " << strerror(errno) << std::endl;
-            break;
-            //return false;
-        }
-    }
-
     return true;
 }
 
@@ -113,5 +79,11 @@ bool SocketServer::stop()
         close(mSock);
 
     return true;
+}
+
+bool SocketServer::processReq(int cliSock, struct sockaddr_in *cliAddr)
+{
+    //need child class to implement it.
+    return false;
 }
 

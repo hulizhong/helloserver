@@ -4,18 +4,27 @@ project(HelloServer)
 set(CMAKE_BUILD_TYPE "debug")
 set(CMAKE_CXX_FLAGS "-O0")
 
-############################################################ ADD compile file.
+
+############################################################ Add submodule director.
+## generate libsocketserver.so libsocketclient.so
+add_subdirectory(Socket)
+
+## generate helloclient
+add_subdirectory(client)
+
+## generate hellopressureclient hellopressureserver
+add_subdirectory(dpt)
+
+
+############################################################ ADD main compile file.
 ## Method1. add compile files one by one.
 SET(HELLO_SERVER_SRC Main.cpp)
-LIST(APPEND HELLO_SERVER_SRC SocketServer.cpp)
+LIST(APPEND HELLO_SERVER_SRC HelloServer.cpp)
 
 ## Method2. add compile files by regular express.
 
 
-############################################################ Add client director.
-add_subdirectory(client)
-
-
 #message("helloserver", "------------ok")
 add_executable(helloserver ${HELLO_SERVER_SRC})
+target_link_libraries(helloserver "socketserver")
 

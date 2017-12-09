@@ -5,26 +5,27 @@
 	> Created Time: Fri 08 Dec 2017 03:44:39 PM HKT
  ************************************************************************/
 
-#include "SocketClient.h"
+#include "HelloClient.h"
 #include <iostream>
 #include <pthread.h>
 using namespace std;
 
-/**
- * the helloserver test client.
- **/
 
 void* threadFun(void*)
 {
-    SocketClient sc("172.22.48.101", 8899);
-    sc.start();
+    HelloClient hc("172.22.48.101", 8899);
+    hc.start();
 
     for (int i=0; i<100; i++)
-        sc.sendEcho();
+        hc.sendReq();
 
-    sc.stop();
+    hc.stop();
 }
 
+
+/**
+ * the helloserver test client.
+ **/
 int main(int argc, char* argv[])
 {
     //int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);

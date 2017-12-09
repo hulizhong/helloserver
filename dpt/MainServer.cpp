@@ -1,19 +1,16 @@
 /*************************************************************************
-	> File Name: Main.cpp
+	> File Name: Server.cpp
 	> Author: 
 	> Mail: 
-	> Created Time: Fri 08 Dec 2017 02:18:04 PM HKT
+	> Created Time: Sat 09 Dec 2017 09:46:26 AM HKT
  ************************************************************************/
 
-//#include<iostream>
-#include "HelloServer.h"
+#include "PressureServer.h"
+#include<iostream>
 using namespace std;
-
 
 int main(int argc, char* argv[])
 {
-    HelloServer hs("172.22.48.101", 8899);
-    hs.start();
     return 0;
 }
 
