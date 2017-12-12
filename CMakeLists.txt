@@ -26,5 +26,5 @@ LIST(APPEND HELLO_SERVER_SRC HelloServer.cpp)
 
 #message("helloserver", "------------ok")
 add_executable(helloserver ${HELLO_SERVER_SRC})
-target_link_libraries(helloserver "socketserver")
+target_link_libraries(helloserver socketserver)
 

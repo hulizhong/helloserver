@@ -10,11 +10,15 @@
 
 #include "../Socket/SocketServer.h"
 
-class PressureServer : SocketServer
+class PressureServer : public SocketServer
 {
 public:
+    PressureServer(std::string host, unsigned int port) : SocketServer(host, port) {}
+
     bool doCommand();
 
+protected:
+    virtual bool processReq(int cliSock, struct sockaddr_in *cliAddr);
 };
 
 #endif

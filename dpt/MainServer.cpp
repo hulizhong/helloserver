@@ -11,6 +11,9 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    PressureServer ps("127.0.0.1", 8899);
+    ps.start();
+    ps.stop();
     return 0;
 }
 

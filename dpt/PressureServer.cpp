@@ -12,3 +12,7 @@ bool PressureServer::doCommand()
     return false;
 }
 
+bool PressureServer::processReq(int cliSock, struct sockaddr_in *cliAddr)
+{
+    return false;
+}

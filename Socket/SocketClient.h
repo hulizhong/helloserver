@@ -14,9 +14,13 @@ class SocketClient
 {
 public:
     SocketClient(std::string host, unsigned int port);
+
+    //start the SocketClient.
     bool start();
+    //stop the SocketClient.
     bool stop();
 
+    //send request to SocketServer.
     virtual bool sendReq();
 
 protected:

@@ -12,6 +12,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    PressureClient pc("127.0.0.1", 8899);
+    pc.start();
+    pc.sendCommand(START_PRESS);
+    //pc.sendCommand(SUSPEND_PRESS);
+    //pc.sendCommand(STOP_PRESS);
+    pc.stop();
     return 0;
 }
 
