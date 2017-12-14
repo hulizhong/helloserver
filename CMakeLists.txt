@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 2.8)
 project(HelloServer)
 
 set(CMAKE_BUILD_TYPE "debug")
-set(CMAKE_CXX_FLAGS "-O0")
+set(CMAKE_CXX_FLAGS "-O0 -std=c++11")
+#add_compile_options(-std=c++11)
 
 
 ############################################################ Add submodule director.
+add_subdirectory(util)
+
 ## generate libsocketserver.so libsocketclient.so
 add_subdirectory(Socket)
 
@@ -26,5 +29,5 @@ LIST(APPEND HELLO_SERVER_SRC HelloServer.cpp)
 
 #message("helloserver", "------------ok")
 add_executable(helloserver ${HELLO_SERVER_SRC})
-target_link_libraries(helloserver socketserver)
+target_link_libraries(helloserver socketserver log)
 

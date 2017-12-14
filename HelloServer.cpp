@@ -5,6 +5,7 @@
 	> Created Time: Fri 08 Dec 2017 02:46:52 PM HKT
  ************************************************************************/
 
+#include "util/Log.h"
 #include "HelloServer.h"
 #include <iostream>
 #include <sys/types.h>
@@ -28,10 +29,14 @@ bool HelloServer::processEchoReq(int cliSock, struct sockaddr_in *cliAddr)
     ssize_t res = 0;
     while (true)
     {
+        //while (1)
+        //    LOG_INFO("peer was close. ---------------" << cliSock);
+
         res = recv(cliSock, buff, sizeof(buff), 0);
         if (res == 0)
         {
-            std::cout << "peer was close." << std::endl;
+            LOG_INFO("peer was close." << cliSock);
+            std::cout << "peer was close." << cliSock << std::endl;
             break;
             //return true;
         }

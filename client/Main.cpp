@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include "HelloClient.h"
+#include "../util/Log.h"
 #include <iostream>
 #include <pthread.h>
 using namespace std;
@@ -15,6 +16,9 @@ void* threadFun(void*)
 {
     HelloClient hc("172.22.48.101", 8899);
     hc.start();
+
+    //while (1)
+    //    LOG_INFO("dsafkjdsfajkfdsakjfkasdfjkjasdfsadfdfsafasdfasdfj");
 
     for (int i=0; i<100; i++)
         hc.sendReq();
@@ -30,7 +34,8 @@ int main(int argc, char* argv[])
 {
     //int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
 
-#define THREAD_NUM 100
+    Log::initialize();
+#define THREAD_NUM 10
     pthread_t thrIdArrary[THREAD_NUM];
 
     pthread_attr_t thrAttr;
