@@ -49,9 +49,9 @@ Log::~Log()
 }
     
     
-bool Log::initialize()
+bool Log::initialize(std::string logPath)
 {
-    std::string logFilePath = "/var/log/hello.log";
+    std::string logFilePath = logPath;
     //[fix], cant "3M", then will only write one word in every log file.
     std::string logFileSize = "30MB";
     std::string logFileNum = "3";

@@ -6,14 +6,13 @@
  ************************************************************************/
 
 #include "util/Log.h"
-//#include<iostream>
 #include "HelloServer.h"
 using namespace std;
 
 
 int main(int argc, char* argv[])
 {
-    Log::initialize();
+    Log::initialize("/var/log/hserver.log");
 
     LOG_INFO("main begin..");
     HelloServer hs("172.22.48.101", 8899);

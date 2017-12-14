@@ -34,7 +34,7 @@ int main(int argc, char* argv[])
 {
     //int pthread_create(pthread_t *thread, const pthread_attr_t *attr, void *(*start_routine) (void *), void *arg);
 
-    Log::initialize();
+    Log::initialize("/var/log/hclient.log");
 #define THREAD_NUM 10
     pthread_t thrIdArrary[THREAD_NUM];
 

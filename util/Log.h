@@ -21,7 +21,7 @@ private:
     
 public:
     ~Log();
-    static bool initialize();
+    static bool initialize(std::string logPath);
     static log4cxx::LoggerPtr getLog();
 };
 

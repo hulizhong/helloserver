@@ -7,7 +7,6 @@
 
 #include "util/Log.h"
 #include "HelloServer.h"
-#include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <errno.h> //errno
@@ -36,13 +35,12 @@ bool HelloServer::processEchoReq(int cliSock, struct sockaddr_in *cliAddr)
         if (res == 0)
         {
             LOG_INFO("peer was close." << cliSock);
-            std::cout << "peer was close." << cliSock << std::endl;
             break;
             //return true;
         }
         else if (res == -1)
         {
-            std::cout << "recv " << strerror(errno) << std::endl;
+            LOG_ERROR("recv " << strerror(errno));
             break;
             //return false;
         }
@@ -51,7 +49,7 @@ bool HelloServer::processEchoReq(int cliSock, struct sockaddr_in *cliAddr)
         res =  send(cliSock, buff, strlen(buff), 0);
         if (res == -1)
         {
-            std::cout << "send " << strerror(errno) << std::endl;
+            LOG_ERROR("send " << strerror(errno));
             break;
             //return false;
         }

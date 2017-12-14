@@ -6,6 +6,7 @@
  ************************************************************************/
 
 #include "SocketClient.h"
+#include "../util/Log.h"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -14,8 +15,6 @@
 #include <unistd.h>
 #include <errno.h>
 #include <string.h>
-
-#include <iostream>
 
 
 SocketClient::SocketClient(std::string host, unsigned int port) : mHost(host), mPort(port)
@@ -30,7 +29,7 @@ bool SocketClient::start()
     mSock = socket(AF_INET, SOCK_STREAM, 0);
     if (mSock == -1)
     {
-        std::cout << "socket " << strerror(errno) << std::endl;
+        LOG_ERROR("socket " << strerror(errno));
         return false;
     }
 
@@ -43,7 +42,7 @@ bool SocketClient::start()
     int res = connect(mSock, (struct sockaddr *)&sockAddr, sizeof(sockAddr));
     if (res == -1)
     {
-        std::cout << "connect " << strerror(errno) << std::endl;
+        LOG_ERROR("connect " << strerror(errno));
         return false;
     }
 

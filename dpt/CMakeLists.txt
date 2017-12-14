@@ -8,8 +8,8 @@ set(HELLO_PRESSURE_SERVER_SRC MainServer.cpp PressureServer.cpp)
 set(HELLO_PRESSURE_CLIENT_SRC MainClient.cpp PressureClient.cpp)
 
 add_executable(hellopressureserver ${HELLO_PRESSURE_SERVER_SRC})
-target_link_libraries(hellopressureserver socketserver)
+target_link_libraries(hellopressureserver socketserver log)
 
 add_executable(hellopressureclient ${HELLO_PRESSURE_CLIENT_SRC})
-target_link_libraries(hellopressureclient socketclient)
+target_link_libraries(hellopressureclient socketclient log)
 

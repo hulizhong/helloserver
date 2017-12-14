@@ -6,7 +6,7 @@
  ************************************************************************/
 
 #include "SocketServer.h"
-#include <iostream>
+#include "../util/Log.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <errno.h> //errno
@@ -24,12 +24,12 @@ SocketServer::SocketServer(std::string host, unsigned int port)
 
 bool SocketServer::start()
 {
-    std::cout << mHost << " " << mPort << std::endl;
+    LOG_INFO("host " << mHost << "  port " << mPort);
     //step 1. int socket(int domain, int type, int protocol);
     mSock = socket(AF_INET, SOCK_STREAM, 0);
     if (mSock == -1)
     {
-        std::cout << "socket " << strerror(errno) << std::endl;
+        LOG_ERROR("socket " << strerror(errno));
         return false;
     }
 
@@ -42,7 +42,7 @@ bool SocketServer::start()
     int res = bind(mSock, (struct sockaddr *)&sockAddr, sizeof(sockAddr));
     if (res == -1)
     {
-        std::cout << "bind " << strerror(errno) << std::endl;
+        LOG_ERROR("bind " << strerror(errno));
         return false;
     }
     
@@ -50,7 +50,7 @@ bool SocketServer::start()
     res = listen(mSock, 30);
     if (res == -1)
     {
-        std::cout << "listen " << strerror(errno) << std::endl;
+        LOG_ERROR("listen " << strerror(errno));
         return false;
     }
 
@@ -64,7 +64,7 @@ bool SocketServer::start()
         cliSock = accept(mSock, (struct sockaddr *)&cliAddr, &cliAddrLen);
         if (cliSock == -1)
         {
-            std::cout << "accept " << strerror(errno) << std::endl;
+            LOG_ERROR("accept " << strerror(errno));
             break;
         }
         processReq(cliSock, &cliAddr);
