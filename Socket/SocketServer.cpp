@@ -22,6 +22,9 @@ SocketServer::SocketServer(std::string host, unsigned int port)
     mSock = -1;
 }
 
+/**
+ * Start an tcp server mSock(mHost:mPort).
+ **/
 bool SocketServer::start()
 {
     LOG_INFO("host " << mHost << "  port " << mPort);
@@ -73,6 +76,9 @@ bool SocketServer::start()
     return true;
 }
 
+/**
+ * Stop the mSock.
+ **/
 bool SocketServer::stop()
 {
     if (mSock != -1)

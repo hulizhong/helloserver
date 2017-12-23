@@ -23,6 +23,9 @@ SocketClient::SocketClient(std::string host, unsigned int port) : mHost(host), m
 }
 
 
+/**
+ * connect the tcp server(mHost, mPort)
+ **/
 bool SocketClient::start()
 {
     //step 1. int socket(int domain, int type, int protocol);
@@ -49,6 +52,9 @@ bool SocketClient::start()
     return true;
 }
 
+/**
+ * disconnect the tcp server(mHost, mPort)
+ **/
 bool SocketClient::stop()
 {
     if (mSock != -1)

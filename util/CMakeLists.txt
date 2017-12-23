@@ -10,3 +10,6 @@ add_definitions(-DUSE_SYNC_LOG)
 add_library(log SHARED ${LOG_SRC})
 target_link_libraries(log log4cxx)
 
+## generate the debian package.
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/liblog.so DESTINATION run) 
+
